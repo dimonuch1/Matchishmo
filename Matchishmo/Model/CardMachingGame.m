@@ -54,12 +54,12 @@
 -(void)chooseCardIndex:(NSUInteger)index{
     
     Card* card = [self.cards objectAtIndex:index];
-    if(card.isMatched){
-        if(card.isChoisen){
+    if(!card.isMatched){
+        if(card.isChosen){
            card.chosen = NO;
         } else {
             for(Card* otherCard in self.cards){
-                if(otherCard.isChoisen && !otherCard.isMatched){
+                if(otherCard.isChosen && !otherCard.isMatched){
                     int matchScore = [card match:@[otherCard]];
                     if(matchScore){
                         self.score += matchScore * MATCH_BONUS;
@@ -69,15 +69,13 @@
                         self.score -= MISMATCH_PENALTY;
                         otherCard.chosen = NO;
                     }
-                    break;
+                    break;//can only choose 2 cards for now
                 }
             }
             self.score -= COST_TO_CHOOSE;
             card.chosen = YES;
         }
     }
-    
-    
 }
 
 @end

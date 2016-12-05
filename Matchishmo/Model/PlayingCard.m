@@ -61,8 +61,7 @@
             }
         }
     }
-    
-    return 0;
+    return score;
 }
 
 @end

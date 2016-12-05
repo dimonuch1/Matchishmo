@@ -17,6 +17,7 @@
 //@property (strong,nonatomic) Deck* deck;
 @property (strong,nonatomic) CardMachingGame* game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 
 @end
 
@@ -73,9 +74,19 @@
     for(UIButton* cardButton in self.cardButtons){
         NSInteger cardButtonIndex = [self.cardButtons indexOfObject:cardButton];
         Card* card = [self.game cardAtIndex:cardButtonIndex];
-        [cardButton setTitle:<#(nullable NSString *)#> forState:<#(UIControlState)#>];
-        [cardButton setBackgroundImage:<#(nullable UIImage *)#> forState:<#(UIControlState)#>];
+        [cardButton setTitle:[self titleForCard:card] forState:UIControlStateNormal];
+        [cardButton setBackgroundImage:[self backgroungImageForCard:card] forState:UIControlStateNormal];
+        cardButton.enabled = !card.isMatched;
+        self.scoreLabel.text = [NSString stringWithFormat:@"Score:%ld",self.game.score];
     }
+}
+
+-(NSString*)titleForCard:(Card*)card{
+    return card.isChosen ? card.contents : @"";
+}
+
+-(UIImage*)backgroungImageForCard:(Card*)card{
+    return [UIImage imageNamed:card.isChosen ? @"cardFront" : @"cardBack"];
 }
 
 @end
