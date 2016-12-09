@@ -20,4 +20,6 @@
 -(void)chooseCardIndex:(NSUInteger)index;
 -(Card*)cardAtIndex:   (NSUInteger)index;
 
+@property(nonatomic) NSInteger numberOfMutches;
+
 @end

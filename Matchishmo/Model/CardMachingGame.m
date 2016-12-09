@@ -18,6 +18,10 @@
 
 @implementation CardMachingGame
 
+-(void) setNumberOfMutches:(NSInteger)numberOfMutches{
+    _numberOfMutches = numberOfMutches >=2 ? numberOfMutches : 2;
+}
+
 -(NSMutableArray*) cards{
     if(!_cards)_cards = [[NSMutableArray alloc]init];
     return _cards;

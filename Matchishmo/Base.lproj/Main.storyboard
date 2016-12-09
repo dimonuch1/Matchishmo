@@ -138,16 +138,34 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Score:0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RCO-4b-N4t">
-                                <rect key="frame" x="20" y="527" width="136" height="21"/>
+                                <rect key="frame" x="20" y="527" width="116" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Vfj-pg-LCI">
+                                <rect key="frame" x="198" y="518" width="109" height="29"/>
+                                <segments>
+                                    <segment title="2 cards"/>
+                                    <segment title="3 cards"/>
+                                </segments>
+                                <connections>
+                                    <action selector="chengeNumberOfMutches:" destination="BYZ-38-t0r" eventType="valueChanged" id="0aP-6N-5C8"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0K-0g-wuK">
+                                <rect key="frame" x="137" y="518" width="46" height="30"/>
+                                <state key="normal" title="Deal"/>
+                                <connections>
+                                    <action selector="dealPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pFx-fg-9Q8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="numberOfMutchesSegment" destination="Vfj-pg-LCI" id="g0W-gb-5bp"/>
                         <outlet property="scoreLabel" destination="RCO-4b-N4t" id="DOF-5B-2e8"/>
                         <outletCollection property="cardButtons" destination="Bc6-5Y-GEA" id="AnN-0g-dCc"/>
                         <outletCollection property="cardButtons" destination="SpQ-Xj-Ybn" id="JIF-34-P7r"/>
@@ -171,4 +189,5 @@
     <resources>
         <image name="cardBack" width="64" height="96"/>
     </resources>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>

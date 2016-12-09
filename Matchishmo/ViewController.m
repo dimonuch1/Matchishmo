@@ -18,16 +18,28 @@
 @property (strong,nonatomic) CardMachingGame* game;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *numberOfMutchesSegment;
 
 @end
 
 @implementation ViewController
+
 /*
 -(Deck*)deck{
     if(!_deck)_deck = [self createDeck];
     return _deck;
 }
 */
+
+- (IBAction)chengeNumberOfMutches:(UISegmentedControl *)sender {
+    [self dealPress:nil];
+}
+
+- (IBAction)dealPress:(UIButton *)sender {
+    self.game = nil;
+    [self updateUI];
+}
+
 -(Deck*) createDeck{
     //return [[PlayingCardDeck alloc]init];
     return nil;//abstract
@@ -36,8 +48,15 @@
 -(CardMachingGame*)game{
     if(!_game) _game = [[CardMachingGame alloc]initWithCardCount:[self.cardButtons count]
                                                         usingDeck:[self createDeck]];
+    _game.numberOfMutches = [self numberOfMutches];//установка необходимого количества совпадающих карт
     return _game;
 }
+
+//возврат необходимог количества совпадающих карт
+-(NSInteger) numberOfMutches{
+    return self.numberOfMutchesSegment.selectedSegmentIndex+2;
+}
+
 /*
 -(void)setFlipCount:(int)flipCount{
     //_flipCount = flipCount;
